@@ -74,7 +74,7 @@ func generateVanityAddress(pattern string) (*btcec.PublicKey, *btcec.PrivateKey)
 }
 func main() {
 
-	generateVanityAddress("JOE")
+	generateVanityAddress("JW")
 	// In order to recieve coins we must generate a public/private key pair.
 
 	//pub, priv := generateKeyPair()
