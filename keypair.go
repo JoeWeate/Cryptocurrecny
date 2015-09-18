@@ -6,7 +6,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"log"
-	"strings"
 
 	"github.com/btcsuite/btcec"
 	"github.com/btcsuite/btcnet"
@@ -51,46 +50,27 @@ func generateAddr(pub *btcec.PublicKey) *btcutil.AddressPubKeyHash {
 	return addr
 }
 
-func generateVanityAddress(pattern string) (*btcec.PublicKey, *btcec.PrivateKey){
-	
-    	for  {
-		
-		pub, priv := generateKeyPair()
-		addr := generateAddr(pub)
-		
-		if(strings.Contains(addr.String(), pattern) ){
-			fmt.Printf("This is a private key in hex:\t[%s]\n",hex.EncodeToString(priv.Serialize()))
-
-			fmt.Printf("This is a public key in hex:\t[%s]\n",hex.EncodeToString(pub.SerializeCompressed()))
-			fmt.Printf("This is the associated Bitcoin address:\t[%s]\n", addr.String())
-			return priv.PubKey(), priv
-
-		}
-		
-		
-	}
-	
-	
-}
 func main() {
 
-	generateVanityAddress("JFW")
 	// In order to recieve coins we must generate a public/private key pair.
+boo:="0"
+	for{
 
-	//pub, priv := generateKeyPair()
-
-	
+		if condition {boo=="1"}
+		pub, priv := generateKeyPair()
+	}
+	pub, priv := generateKeyPair()
 
 	// To use this address we must store our private key somewhere. Everything
 	// else can be recovered from the private key.
-	//fmt.Printf("This is a private key in hex:\t[%s]\n",
-	//	hex.EncodeToString(priv.Serialize()))
+	fmt.Printf("This is a private key in hex:\t[%s]\n",
+		hex.EncodeToString(priv.Serialize()))
 
-//	fmt.Printf("This is a public key in hex:\t[%s]\n",
-	//	hex.EncodeToString(pub.SerializeCompressed()))
-	
-//	addr := generateAddr(pub)
+	fmt.Printf("This is a public key in hex:\t[%s]\n",
+		hex.EncodeToString(pub.SerializeCompressed()))
+
+	addr := generateAddr(pub)
 
 	// Output the bitcoin address derived from the public key
-//	fmt.Printf("This is the associated Bitcoin address:\t[%s]\n", addr.String())
+	fmt.Printf("This is the associated Bitcoin address:\t[%s]\n", addr.String())
 }
